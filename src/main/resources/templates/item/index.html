@@ -10,6 +10,11 @@
 
     <h1 th:text="${title}"></h1>
 
+    <ul>
+        <li th:each="item : ${items}" th:text="${item.name}"></li>
+    </ul>
+
 </div>
 
 </body>
+</html>
