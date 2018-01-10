@@ -10,9 +10,17 @@
 
     <h1 th:text="${title}"></h1>
 
-    <ul>
-        <li th:each="item : ${items}" th:text="${item.name}"></li>
-    </ul>
+    <p><a href="/item/new">Add Item</a></p>
+
+    <form method="post" action="/cart/add-item/">
+
+        <div th:each="item : ${items}" class="form-group">
+            <input type="checkbox" name="ids" th:value="${item.uid}" th:id="${item.uid}"/>
+            <label th:for="${item.uid}" th:text="${item.name}"></label>
+        </div>
+
+        <input type="submit" value="Add To Cart" />
+    </form>
 
 </div>
 

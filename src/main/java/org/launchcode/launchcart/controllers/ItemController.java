@@ -22,7 +22,7 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping
     public String viewAllItems(Model model) {
         model.addAttribute("items", itemRepository.findAll());
         return "item/index";
@@ -37,15 +37,12 @@ public class ItemController {
 
     @RequestMapping(value = "new", method = RequestMethod.POST)
     public String createNewItem(@ModelAttribute @Valid Item item, Errors errors, Model model) {
-
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Item");
             return "item/new";
         }
-
         itemRepository.save(item);
-
-        return "redirect:item";
+        return "redirect:/item";
     }
 
 }
