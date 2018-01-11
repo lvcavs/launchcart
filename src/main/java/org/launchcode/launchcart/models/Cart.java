@@ -20,4 +20,8 @@ public class Cart extends AbstractEntity {
         return items;
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
 }
