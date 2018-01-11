@@ -7,29 +7,19 @@ import org.launchcode.launchcart.data.ItemRepository;
 import org.launchcode.launchcart.models.Cart;
 import org.launchcode.launchcart.models.Item;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
-import javax.transaction.Transactional;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by LaunchCode
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
-@AutoConfigureMockMvc
-@Transactional
+@IntegrationTestConfig
 public class CartControllerTests {
 
     @Autowired
