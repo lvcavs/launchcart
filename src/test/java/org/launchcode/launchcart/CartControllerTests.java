@@ -33,8 +33,6 @@ public class CartControllerTests {
 
     @Test
     public void testCanSaveItemToCartAndRedirect() throws Exception {
-        Cart cart = new Cart();
-        cartRepository.save(cart);
         Item item = new Item("Test Item", 5);
         itemRepository.save(item);
         mockMvc.perform(post("/cart/add-item/")
