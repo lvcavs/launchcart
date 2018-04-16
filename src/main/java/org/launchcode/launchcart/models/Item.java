@@ -1,29 +1,24 @@
 package org.launchcode.launchcart.models;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 /**
  * Created by LaunchCode
  */
-@Entity
 public class Item extends AbstractEntity {
 
-    @NotNull
-    @Size(min=3, max=255)
     private String name;
 
-    @NotNull
-    @Min(value = 0)
     private double price;
 
     private String description;
 
-    public Item() {}
+    public Item() {
+        super();
+    }
 
     public Item (String name, double price, String description) {
+        this();
         this.name = name;
         this.price = price;
         this.description = description;
