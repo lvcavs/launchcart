@@ -1,15 +1,18 @@
 package org.launchcode.launchcart;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.launchcode.launchcart.data.ItemRepository;
+import org.launchcode.launchcart.data.ItemMemoryRepository;
 import org.launchcode.launchcart.models.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder;
@@ -27,8 +30,12 @@ public class ItemControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private ItemRepository itemRepository;
+    private ItemMemoryRepository itemRepository = new ItemMemoryRepository();
+
+    @Before
+    public void before() {
+        itemRepository.clear();
+    }
 
     @Test
     public void testItemIndexListsAllItems() throws Exception {

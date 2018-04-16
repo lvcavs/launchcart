@@ -1,8 +1,7 @@
 package org.launchcode.launchcart.controllers;
 
-import org.launchcode.launchcart.data.ItemRepository;
+import org.launchcode.launchcart.data.ItemMemoryRepository;
 import org.launchcode.launchcart.models.Item;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,8 +18,7 @@ import javax.validation.Valid;
 @RequestMapping("item")
 public class ItemController {
 
-    @Autowired
-    private ItemRepository itemRepository;
+    private ItemMemoryRepository itemRepository = new ItemMemoryRepository();
 
     @RequestMapping
     public String viewAllItems(Model model) {

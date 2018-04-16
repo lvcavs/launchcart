@@ -1,9 +1,8 @@
 package org.launchcode.launchcart.controllers;
 
-import org.launchcode.launchcart.data.CartRepository;
-import org.launchcode.launchcart.data.ItemRepository;
+import org.launchcode.launchcart.data.CartMemoryRepository;
+import org.launchcode.launchcart.data.ItemMemoryRepository;
 import org.launchcode.launchcart.models.Cart;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +18,9 @@ import java.util.List;
 @RequestMapping("cart")
 public class CartController {
 
-    @Autowired
-    private CartRepository cartRepository;
+    private CartMemoryRepository cartRepository = new CartMemoryRepository();
 
-    @Autowired
-    private ItemRepository itemRepository;
+    private ItemMemoryRepository itemRepository = new ItemMemoryRepository();
 
     // Support only a single user/cart for now
     private Cart getCartInstance() {
