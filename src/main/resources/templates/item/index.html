@@ -16,7 +16,7 @@
 
         <div th:each="item : ${items}" class="form-group">
             <input type="checkbox" name="ids" th:value="${item.uid}" th:id="${item.uid}"/>
-            <label th:for="${item.uid}" th:text="${item.name}"></label>
+            <label th:for="${item.uid}" th:text="${item.name + ' - $' + item.price}" ></label>
         </div>
 
         <input type="submit" value="Add To Cart" />

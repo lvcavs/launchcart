@@ -77,4 +77,15 @@ public class ItemControllerTests {
                 .andExpect(content().string(containsString(itemName)));
     }
 
+    @Test
+    public void testItemPricesDisplay () throws Exception {
+        itemRepository.save(new Item("apple", 1.99, "Red Delicious"));
+        mockMvc.perform(get("/item"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("1.99")))
+                .andExpect(content().string(containsString("apple")));
+
+
+    }
+
 }
